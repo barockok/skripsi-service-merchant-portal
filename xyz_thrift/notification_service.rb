@@ -66,7 +66,7 @@ module XYZThrift
       SUCCESS = 0
 
       FIELDS = {
-        SUCCESS => {:type => ::Thrift::Types::STRUCT, :name => 'success', :class => ::XYZThrift::Merchant}
+        SUCCESS => {:type => ::Thrift::Types::STRING, :name => 'success'}
       }
 
       def struct_fields; FIELDS; end

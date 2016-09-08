@@ -32,5 +32,5 @@ service MerchantService {
 }
 
 service NotificationService {
-  Merchant send(1:string url, 2:Transaction transaction)
+  string send(1:string url, 2:Transaction transaction)
 }
