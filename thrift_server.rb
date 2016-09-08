@@ -6,7 +6,7 @@ require File.expand_path("../config/environment", __FILE__)
 
 handler = MerchantServiceHandler.new()
 processor = XYZThrift::MerchantService::Processor.new(handler)
-transport = Thrift::ServerSocket.new(9090)
+transport = Thrift::ServerSocket.new(APP_CONFIG[:thrift_server_port] )
 transportFactory = Thrift::BufferedTransportFactory.new()
 server = Thrift::SimpleServer.new(processor, transport, transportFactory)
 
