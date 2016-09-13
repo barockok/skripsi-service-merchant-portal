@@ -1,17 +1,20 @@
 
 $:.push('xyz_thrift')
 require 'thrift'
+require 'active_support/all'
 require 'merchant_service'
-require File.expand_path("../config/environment", __FILE__)
+require_relative 'lib/merchant_loader'
+require_relative 'lib/merchant_service_handler'
 
+port = (ENV['PORT'] || 9092).to_i
 handler = MerchantServiceHandler.new()
 processor = XYZThrift::MerchantService::Processor.new(handler)
-transport = Thrift::ServerSocket.new(APP_CONFIG[:thrift_server_port] )
+transport = Thrift::ServerSocket.new(port)
 transportFactory = Thrift::BufferedTransportFactory.new()
 server = Thrift::SimpleServer.new(processor, transport, transportFactory)
 
 begin
-  puts "Starting the server..."
+  puts "Starting the server... on port #{port}"
   server.serve()
 rescue Interrupt
   puts "done."

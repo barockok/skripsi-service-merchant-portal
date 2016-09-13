@@ -1,6 +1,0 @@
-default: &default
-  thrift_server_port: 9090
-development:
-  <<: *default
-production:
-  <<: *default
