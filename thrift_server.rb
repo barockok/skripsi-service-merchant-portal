@@ -11,7 +11,7 @@ handler = MerchantServiceHandler.new()
 processor = XYZThrift::MerchantService::Processor.new(handler)
 transport = Thrift::ServerSocket.new(port)
 transportFactory = Thrift::BufferedTransportFactory.new()
-server = Thrift::SimpleServer.new(processor, transport, transportFactory)
+server = Thrift::ThreadedServer.new(processor, transport, transportFactory)
 
 begin
   puts "Starting the server... on port #{port}"
