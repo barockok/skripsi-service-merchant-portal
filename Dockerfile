@@ -1,6 +1,6 @@
 FROM ruby:latest
-ADD https://github.com/barockok/skripsi-service-merchant-portal/archive/e4f73dd.tar.gz ./artifact.tar.gz
-RUN mkdir app && tar xf ./artifact.tar.gz -C ./app --strip-components=1
+ADD https://github.com/barockok/skripsi-service-merchant-portal/archive/master.tar.gz ./artifact.tar.gz
+RUN mkdir app && tar xf ./artifact.tar.gz -C ./app --strip-components=1 && rm ./artifact.tar.gz
 WORKDIR ./app
 RUN /usr/local/bin/bundle install
 EXPOSE 3000
